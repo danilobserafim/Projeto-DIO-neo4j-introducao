@@ -1,7 +1,7 @@
 # Modelo de grafo
 
 - Grafo referente ao exercício da DIO sobre "Modelagem de Dados em Grafos de um Serviço de Streaming"
-- Um modelo de grafo com as seguintes entidades e relacionamentos:</br> Entidades(nós): User, Movie, Series, Genre, Actor, Director.</br> Relacionamentos(conexões): WATCHED(com propriedade rating), ACTED_IN, DIRECTED, IN_GENRE.
+- Um modelo de grafo com as seguintes entidades e relacionamentos:</br>Entidades (nós): User, Movie, Series, Genre, Actor, Director.</br>Relacionamentos (conexões): WATCHED(com propriedade rating), ACTED_IN, DIRECTED, IN_GENRE.
 
 ```cypher
 CREATE (:User {name: "João"});
