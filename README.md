@@ -10,18 +10,18 @@ Relacionamentos (conexões): WATCHED (com propriedade rating), ACTED_IN, DIRECTE
 
 ### Modelo de inserção de dados ao NEO4J
 ````cypher
-CREATE (n22:`Stranger things`)<-[:WATCHED {rating: 4.2}]-(n0:`João`)-[:WATCHED {rating: 5}]->(n1:`Ai - Artificial Inteligence`)<-[:DIRECTED]-(:`Steeven spilberg`),
-(:`Haley Joel Osment`)-[:ACTED_IN]->(n1)<-[:ACTED_IN]-(:`Jude Law`),
-(:`Brendan Gleeson`)-[:ACTED_IN]->(n1)<-[:WATCHED {rating: 4.9}]-(n28:Pedro)-[:WATCHED {rating: 3}]->(n17:`The Matrix`)<-[:DIRECTED]-(:` Lilly Wachowski`),
-(:`Ross Duffer`)-[:DIRECTED]->(n22)<-[:WATCHED {rating: 5}]-(n16:Maria)-[:Watched {rating: 5}]->(n17)<-[:DIRECTED]-(:` Lana Wachowski`),
-(:`Carrie-Anne Moss`)-[:ACTED_IN]->(n17)<-[:ACTED_IN]-(:`Laurence Fishburne`),
-(:`Keanu Reeves`)-[:ACTED_IN]->(n17)<-[:WATCHED {rating: 3.1}]-(n0)-[:WATCHED {rating: 5}]->(n34:`Hou Of Dragons`),
-(:`Finn Wolfhard`)-[:ACTED_IN]->(n22)<-[:ACTED_IN]-(:`Noah Schnapp`),
-(:`Millie Bobby Brown`)-[:ACTED_IN]->(n22)<-[:DIRECTED]-(:`Matt Duffer`),
-(n34)<-[:WATCHED {rating: 4.2}]-(n28)-[:WATCHED {rating: 5}]->(n29:`Avatar: Fire and Ash`)<-[:DIRECTED]-(:`James Cameron`),
-(:`Sam Worthington`)-[:ACTED_IN]->(n29)<-[:ACTED_IN]-(:`Zoë Saldaña`),
-(:`Sigourney Weaver`)-[:ACTED_IN]->(n29)<-[:WATCHED {rating: 4.2}]-(n16),
-(:`Ryan Condal `)-[:DIRECTED]->(n34)<-[:ACTED_IN]-(:`Matt Smith `),
-(:`Emma D'Arcy`)-[:ACTED_IN]->(n34)<-[:ACTED_IN]-(:`Paddy Considine`),
-(n0)-[:WATCHED {rating: 5}]->(n29)
+CREATE (`Stranger things`:Serie)<-[:WATCHED {rating: 4.2}]-(`João`:User)-[:WATCHED {rating: 5}]->(`Ai - Artificial Inteligence`:Movie)<-[:DIRECTED]-(:Director),
+(:Actor)-[:ACTED_IN]->(`Ai - Artificial Inteligence`)<-[:ACTED_IN]-(:Actor),
+(:Actor)-[:ACTED_IN]->(`Ai - Artificial Inteligence`)<-[:WATCHED {rating: 4.9}]-(Pedro:User)-[:WATCHED {rating: 3}]->(`The Matrix`:Movie)<-[:DIRECTED]-(:Director),
+(:Director)-[:DIRECTED]->(`Stranger things`)<-[:WATCHED {rating: 5}]-(Maria:User)-[:Watched {rating: 5}]->(`The Matrix`)<-[:DIRECTED]-(:Director),
+(:Actor)-[:ACTED_IN]->(`The Matrix`)<-[:ACTED_IN]-(:Actor),
+(:Actor)-[:ACTED_IN]->(`The Matrix`)<-[:WATCHED {rating: 3.1}]-(`João`)-[:WATCHED {rating: 5}]->(`House Of Dragons`:Serie),
+(:Actor)-[:ACTED_IN]->(`Stranger things`)<-[:ACTED_IN]-(:Actor),
+(:Actor)-[:ACTED_IN]->(`Stranger things`)<-[:DIRECTED]-(:Director),
+(`House Of Dragons`)<-[:WATCHED {rating: 4.2}]-(Pedro)-[:WATCHED {rating: 5}]->(`Avatar: Fire and Ash`:Movie)<-[:DIRECTED]-(:Director),
+(:Actor)-[:ACTED_IN]->(`Avatar: Fire and Ash`)<-[:ACTED_IN]-(:Actor),
+(:Actor)-[:ACTED_IN]->(`Avatar: Fire and Ash`)<-[:WATCHED {rating: 4.2}]-(Maria),
+(:Director)-[:DIRECTED]->(`House Of Dragons`)<-[:ACTED_IN]-(:Actor),
+(:Actor)-[:ACTED_IN]->(`House Of Dragons`)<-[:ACTED_IN]-(:Actor),
+(`João`)-[:WATCHED {rating: 5}]->(`Avatar: Fire and Ash`)
 ````
